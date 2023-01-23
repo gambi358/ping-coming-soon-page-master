@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css">
+  
+  <title>Ping coming soon page</title>
+
+
+</head>
+<body>
+  <main>
+
+    <img class="logo" src="./images/logo.svg" alt="">
+    <h1>  We are launching <span>soon!</span></h1>
+    <p>Subscribe and get notified</p>
+
+    <div class="form">
+      <form id="form">  
+      <input id="email" type="text" placeholder="Your email address..." name="email">
+      <button type="submit">  Notify Me</button>
+      </form>
+      <div class="error-txt"></div>
+    </div>
+
+    <img class="img" src="./images/illustration-dashboard.png" alt="">
+
+<ul>
+  <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+  <li><a href=""><i class="fab fa-twitter"></i></a></li>
+  <li><a href=""><i class="fab fa-instagram"></i></a></li>
+</ul>
+
+  &copy; Copyright Ping. All rights reserved.
+  </main>
+
+<script>
+
+  const email = document.getElementById('email');
+  const form = document.getElementById('form');
+  const errortxt = document.querySelector('.error-txt');
+
+  console.log(errortxt);
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!email.value) {
+      email.classList.add('error');
+      errortxt.textContent = "Please enter email";
+
+      }
+      else if (!validateEmail(email.value)) {
+        email.classList.add('error');
+        errortxt.textContent = "Please provide valid email";
+
+      }
+      else {
+        email.classList.remove('error');
+        errortxt.textContent = "";
+
+
+      }
+  })
+
+
+  function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+  
+</script>
+
+</body>
+</html>
